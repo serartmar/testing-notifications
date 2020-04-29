@@ -1,15 +1,18 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
   View,
   Text,
   StatusBar,
   ScrollView,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
-
+import {SvgXml} from 'react-native-svg';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import messaging from '@react-native-firebase/messaging';
+
+import broom from './broom.svg';
 
 const requestPermission = async () => await messaging().requestPermission();
 
@@ -73,10 +76,17 @@ const App = () => {
         <ScrollView>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>
-                Data from the notification
-              </Text>
-              <Text style={styles.sectionDescription}>{notificationData}</Text>
+              <View style={styles.headerWrapper}>
+                <Text style={styles.sectionTitle}>
+                  Data from the notification
+                </Text>
+                <TouchableOpacity onPress={() => setNotificationData('{}')}>
+                  <SvgXml width="24px" height="24px" xml={broom} />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.sectionDescription}>
+                <Text style={styles.notificationData}>{notificationData}</Text>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -100,7 +110,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    marginBottom: 20,
     fontWeight: '700',
     color: Colors.black,
   },
@@ -111,9 +120,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 20,
-    fontSize: 18,
+  },
+  notificationData: {
+    fontSize: 16,
     fontWeight: '400',
     color: Colors.dark,
+    fontFamily: 'monospace',
+  },
+  headerWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
   },
 });
 

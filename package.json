@@ -12,8 +12,10 @@
   "dependencies": {
     "@react-native-firebase/app": "^6.7.1",
     "@react-native-firebase/messaging": "^6.7.1",
+    "babel-plugin-inline-import": "^3.0.0",
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-native": "0.62.2",
+    "react-native-svg": "^12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
