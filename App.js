@@ -7,6 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
     color: Colors.dark,
-    fontFamily: 'monospace',
+    fontFamily: Platform.OS === 'ios' ? 'Bangla Sangam MN' : 'monospace',
   },
   headerWrapper: {
     flexDirection: 'row',
